@@ -2,7 +2,7 @@
 
 The aim of this repository is to make personal progress on API
 testing and make the knowledge obtained available for others
-to use
+to use.
 
 ## Commit structure
 * * *
@@ -23,12 +23,12 @@ For more information please visit the link above.
 ### Requirements
 * * *
 
-To succesfully followed the steps listed in this repository the following requirements must be meet:
+To succesfully follow the steps listed in this repository the following requirements must be meet:
 
-- [Docker](https://www.docker.com/get-started) version 17.05 or above
-- [GoLang](https://golang.org/doc/install) version 1.13 or above
-- [Node.js](https://nodejs.org/en/) version 14.16.0 or above
-- Access to a Bash console
+- [Docker](https://www.docker.com/get-started) version 17.05 or above.
+- [GoLang](https://golang.org/doc/install) version 1.13 or above.
+- [Node.js](https://nodejs.org/en/) version 14.16.0 or above.
+- Access to a Bash console.
 
 ### Base Project
 * * *
