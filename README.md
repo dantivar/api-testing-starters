@@ -47,7 +47,7 @@ The first step to take is to build and run the docker image for the database. To
 do that, and from the `app` folder, you'll need to run the following commands:
 ```
 # Build the docker image of the database
-docker build -t psql-database
+docker build -t psql-database .
 
 # Run the docker image on port 5432 in detached mode
 docker run -d -p 5432:5432 psql-database
