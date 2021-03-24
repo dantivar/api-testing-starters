@@ -1,0 +1,27 @@
+{
+  "name": "api-testing-starters",
+  "version": "1.0.0",
+  "description": "The aim of this repository is to make personal progress on API\r testing and make the knowledge obtained available for others\r to use.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha tests/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dantivar/api-testing-starters.git"
+  },
+  "author": "dantivar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dantivar/api-testing-starters/issues"
+  },
+  "homepage": "https://github.com/dantivar/api-testing-starters#readme",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2",
+    "supertest": "^6.1.3"
+  }
+}
