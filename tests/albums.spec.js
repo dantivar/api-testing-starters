@@ -48,7 +48,6 @@ describe('Albums endpoint', () => {
   it('Should create a new album', () => {
     const testAlbum = { 'name': 'Viento Sur'}
 
-    console.log(token);
     server
       .post('/v1/albums')
       .send(testAlbum)
@@ -72,6 +71,24 @@ describe('Albums endpoint', () => {
       .expect(200)
       .then((res) => {
         expect(res.body.name).to.be.equal(updatedAlbum.name);
+      });
+  });
+
+  it('Should delete an album', async () => {
+    const testAlbum = { 'name': 'La Sangre Del Mundo'}
+    const albumId = await server
+      .post('/v1/albums')
+      .send(testAlbum)
+      .set('Accept', 'application/json')
+      .set('Authorization', `Bearer ${token}`)
+      .then((res) => res.body.id);
+
+    await server
+      .delete('/v1/albums/' + albumId)
+      .set('Authorization', `Bearer ${token}`)
+      .expect(200)
+      .then((res) => {
+        expect(res.body.name).to.be.equal('La Sangre Del Mundo');
       });
   });
 });
