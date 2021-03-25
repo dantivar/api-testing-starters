@@ -1,13 +1,23 @@
-const server = require('supertest').agent('http://localhost:8080');
+const server = require('supertest')('http://localhost:8080');
 const expect = require('chai').expect;
 
 describe('Albums endpoint', () => {
-  const credentials = { "username": "demo", "password": "pass" };
+  let token = null;
 
-  server
-    .post('/v1/login')
-    .send(credentials)
-    .expect(200);
+  before('Authenticate and set token', (done) => {
+    const credentials = { "username": "demo", "password": "pass" };
+
+    server
+      .post('/v1/login')
+      .send(credentials)
+      .expect(200)
+      .end(onResponse);
+    
+    function onResponse(err, res) {
+      token = res.body.token
+      return done();
+    }
+  });
 
   it('Should get a list of the albums', () => {
     server
@@ -37,15 +47,15 @@ describe('Albums endpoint', () => {
 
   it('Should create a new album', () => {
     const testAlbum = { 'name': 'Viento Sur'}
-    let albumId = '';
 
+    console.log(token);
     server
       .post('/v1/albums')
       .send(testAlbum)
       .set('Accept', 'application/json')
+      .set('Authorization', `Bearer ${token}`)
       .expect(200)
-      .expect((res) => {
-        albumId = res.body.id;
+      .end((err, res) => {
         expect(res.body.name).to.be.equal(testAlbum.name);
       });
   });
@@ -58,6 +68,7 @@ describe('Albums endpoint', () => {
       .put('/v1/albums/' + testId)
       .send(updatedAlbum)
       .set('Accept', 'application/json')
+      .set('Authorization', `Bearer ${token}`)
       .expect(200)
       .then((res) => {
         expect(res.body.name).to.be.equal(updatedAlbum.name);
