@@ -69,3 +69,23 @@ An then you'll just need to run:
 
 Now, go to your browser and access `localhost:8080/healthcheck` and you should
 see something like `OK v1.0.0`
+
+
+## Run Tests
+
+First of all, the tests are located in the test folder and are separated in files
+given its endpoint. To install the packages needed, in the root folder you just
+need to run:
+
+```
+npm install
+```
+
+This will install [Mocha](https://mochajs.org/), the testing framework;
+[Supertest](https://www.npmjs.com/package/supertest) which is used to perform
+HTTP requests; and [Chai](https://www.chaijs.com/) which is used for assertions.
+
+With all the dependencies set up, just run:
+```
+npm test
+```
